@@ -1,18 +1,16 @@
+// These are the required packages needed to run this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 const path = require("path");
 const generate = require("./src/generateHTML");
-
-
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern");
-// const { isNull } = require("util");
 
 //array to save all the members of the team
 const employees = [];
 
-//question set for an engineer team member
+//questions prompt for the manager
 function managerQuestions(){
   return inquirer.prompt([
     {
@@ -33,7 +31,6 @@ function managerQuestions(){
       message: "What is the manager's employee ID?",
       name: "id",
       validate: (idInput) => {
-        //   debug for null or blank
         if (isNaN(idInput)) {
           console.log("Please enter the manager's employee ID to proceed");
           return false;
@@ -61,28 +58,37 @@ function managerQuestions(){
       message: "What is the manager's office number?",
       name: "officeNumber",
       validate: (officeNumberInput) => {
-        if (isNaN(officeNumberInput)) {
-          console.log("Please enter an office number to proceed");
-          return false;
-        } else {
-          return true;
+        if (officeNumberInput.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+          return true; 
+        } else { 
+          return "Please enter a valid phone number"
         }
+
+        // use below if an office number is wanted and not an office phone number
+
+        // if (isNaN(officeNumberInput)) {
+        //   console.log("Please enter an office number to proceed");
+        //   return false;
+        // } else {
+        //   return true;
+        // }
+
       },
     },
   ])
+  // using the promise .then to adopt new manager info and pushes new manager info to the employees array then calls the teamChoice function to ask user if they want to add more employees or finish.
   .then(managerInput => {
     const  { name, id, email, officeNumber } = managerInput; 
     const manager = new Manager (name, id, email, officeNumber);
 
     employees.push(manager); 
-    // console.log(manager); 
     teamChoice()
   })
 };
-
+// calls managerQuestion function
 managerQuestions();
 
-
+// after manager info is input by user, they are prompted with choices to add more employees or finish
 function teamChoice (){
     inquirer.prompt([
         {
@@ -105,6 +111,7 @@ function teamChoice (){
     })
 };
 
+// question prompts for engineer
 function engineerQuestions (){
     return inquirer.prompt([
       {
@@ -138,6 +145,7 @@ function engineerQuestions (){
         message: "What is the engineer's email address?",
         name: "email",
         validate: (email) => {
+          // regex validator for email
           valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
           if (valid) {
             return true;
@@ -161,16 +169,16 @@ function engineerQuestions (){
         },
       },
     ])
+    // works the same a manager promise explained above
     .then(engineerInput => {
       const  { name, id, email, github } = engineerInput; 
       const engineer = new Engineer (name, id, email, github);
-  
       employees.push(engineer); 
-    //   console.log(engineer); 
       teamChoice()
     })
   };
 
+  // Question prompts for intern
   function internQuestions (){
     return inquirer.prompt([
       {
@@ -227,16 +235,16 @@ function engineerQuestions (){
         },
       },
     ])
+    // works the same a manager promise explained above
     .then(internInput => {
       const  { name, id, email, school } = internInput; 
       const intern = new Intern (name, id, email, school);
-  
       employees.push(intern); 
-    //   console.log(intern); 
       teamChoice()
     })
   };
 
+  // function to send obtained employee info to generateHTML file in the dist folder in order to generate an index.html file with the users employee inputs. 
   function buildTeam() {
       fs.writeFileSync(path.join(path.resolve(__dirname, "dist"), "index.html"), generate(employees), "utf-8" )
   };

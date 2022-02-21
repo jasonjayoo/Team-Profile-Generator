@@ -1,4 +1,4 @@
-// using Employee constructor 
+// references Employee constructor class
 const Employee = require('../lib/Employee');
 
 // creates employee object 

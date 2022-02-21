@@ -1,4 +1,4 @@
-// create Manager card
+// creates Manager info card
 const createManager = function (manager) {
   return `
     <div class="column is-one-third-desktop">
@@ -23,7 +23,7 @@ const createManager = function (manager) {
     `;
 };
 
-// create Engineer card
+// creates Engineer info card
 const createEngineer = function (engineer) {
   return `
     <div class="column is-one-third-desktop">
@@ -47,7 +47,7 @@ const createEngineer = function (engineer) {
     `;
 };
 
-// create Intern card
+// creates Intern info card
 const createIntern = function (intern) {
   return `
     <div class="column is-one-third-desktop">
@@ -71,46 +71,46 @@ const createIntern = function (intern) {
     </div>`;
 };
 
-// push array to page
+// pushes the data array to the webpage
 generateHTML = (data) => {
-  // array for cards
+  // empty array that employee info cards will be pushed to
   htmlInfo = [];
 
   for (let i = 0; i < data.length; i++) {
     const employee = data[i];
     const role = employee.getRole();
 
-    // call manager function
+    // calls the manager function
     if (role === "Manager") {
       const managerInfo = createManager(employee);
-
+    // pushes manager info to the htmlInfo array
       htmlInfo.push(managerInfo);
     }
 
-    // call engineer function
+    // calls the engineer function
     if (role === "Engineer") {
       const engineerInfo = createEngineer(employee);
-
+    // pushes engineer info to the htmlInfo array
       htmlInfo.push(engineerInfo);
     }
 
-    // call intern function
+    // calls the intern function
     if (role === "Intern") {
       const internInfo = createIntern(employee);
-
+    // pushes intern info to the htmlInfo array
       htmlInfo.push(internInfo);
     }
   }
 
-  // joining strings
+  // takes all the pushed employee info that been stored in the htmlInfo array and joins them together.
   const employeeInfo = htmlInfo.join("");
 
-  // return to generated page
+  // takes all input employee info and returns to generated the page
   const generateTeam = generateTeamPage(employeeInfo);
   return generateTeam;
 };
 
-// generate html page
+// this generates the html page using bulma css framework and other extensions via temperate literal.
 const generateTeamPage = function (employeeInfo) {
   return `
   <!DOCTYPE html>
@@ -147,5 +147,5 @@ const generateTeamPage = function (employeeInfo) {
 `;
 };
 
-// export to index
+// exports the html template to the index.js
 module.exports = generateHTML;

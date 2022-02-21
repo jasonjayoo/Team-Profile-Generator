@@ -1,7 +1,7 @@
-// using Engineer constructor 
+// references Engineer constructor class 
 const Engineer = require('../lib/Engineer');
 
-// creating engineer object  
+// creates engineer object  
 test('creates an Engineer object', () => {
     const engineer = new Engineer('Jason Yoo', 222, 'jasonjayoo@outlook.com', 'jasonjayoo');
     

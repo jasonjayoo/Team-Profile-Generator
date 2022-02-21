@@ -1,7 +1,7 @@
-// using Intern constructor 
+// references Intern constructor class
 const Intern = require('../lib/Intern');
 
-// creating intern object  
+// creates intern object  
 test('creates an Intern object', () => {
     const intern = new Intern('Jason Yoo', 222, 'jasonjayoo@outlook.com', 'UCI');
     

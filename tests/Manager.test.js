@@ -1,7 +1,7 @@
-// using Manager constructor 
+// references Manager constructor class
 const Manager = require('../lib/Manager');
 
-// creating manager object  
+// creates manager object  
 test('creates an Manager object', () => {
     const manager = new Manager('Jason Yoo', 222, 'jasonjayoo@outlook.com', 2);
     
