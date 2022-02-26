@@ -78,26 +78,26 @@ generateHTML = (data) => {
 
   for (let i = 0; i < data.length; i++) {
     const employee = data[i];
-    const role = employee.getRole();
+    const position = employee.getRole();
 
     // calls the manager function
-    if (role === "Manager") {
+    if (position === "Manager") {
       const managerInfo = createManager(employee);
-    // pushes manager info to the htmlInfo array
+      // pushes manager info to the htmlInfo array
       htmlInfo.push(managerInfo);
     }
 
     // calls the engineer function
-    if (role === "Engineer") {
+    if (position === "Engineer") {
       const engineerInfo = createEngineer(employee);
-    // pushes engineer info to the htmlInfo array
+      // pushes engineer info to the htmlInfo array
       htmlInfo.push(engineerInfo);
     }
 
     // calls the intern function
-    if (role === "Intern") {
+    if (position === "Intern") {
       const internInfo = createIntern(employee);
-    // pushes intern info to the htmlInfo array
+      // pushes intern info to the htmlInfo array
       htmlInfo.push(internInfo);
     }
   }
