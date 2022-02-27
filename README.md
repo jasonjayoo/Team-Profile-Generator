@@ -100,7 +100,7 @@ Reach me at my email provided below to be added as a contributor.
   
 ## Tests: 
 <br>
-npm install inquirer and jest along with .fs. Once they're installed, run a test by typing npm test into the terminal.
+npm install inquirer and jest along with .fs. Once they're installed, run a test by typing npm test/npm run test into the terminal.
   
 <br>
 <br>
