@@ -1,8 +1,8 @@
 // references Employee constructor class
 const Employee = require("../lib/Employee");
 
-describe("Employee-Test", () => {
-  describe("Employee-Object", () => {
+describe("Employee", () => {
+  describe("Object", () => {
     // creates employee object
     it("should create an employee object", () => {
       const employee = new Employee("Jason Yoo", 222, "jasonjayoo@outlook.com");
@@ -14,7 +14,7 @@ describe("Employee-Test", () => {
   });
 
   // gets id from getId()
-  describe("Employee-Name", () => {
+  describe("Name", () => {
     it("should retrieve employee names", () => {
       const employee = new Employee("Jason Yoo", 222, "jasonjayoo@outlook.com");
 
@@ -22,7 +22,7 @@ describe("Employee-Test", () => {
     });
   });
   // gets id from getId()
-  describe("Employee-ID", () => {
+  describe("ID", () => {
     it("should retrieve employees IDs", () => {
       const employee = new Employee("Jason Yoo", 222, "jasonjayoo@outlook.com");
 
@@ -31,7 +31,7 @@ describe("Employee-Test", () => {
   });
 
   // gets emails from getEmail()
-  describe("Employee-Email", () => {
+  describe("Email", () => {
     it("should retrieve employee emails", () => {
       const employee = new Employee("Jason Yoo", 222, "jasonjayoo@outlook.com");
 
@@ -42,7 +42,7 @@ describe("Employee-Test", () => {
   });
 
   // gets role from getRole()
-  describe("Employee-Role", () => {
+  describe("Role", () => {
     it("should retrieve role of employees", () => {
       const employee = new Employee("Jason Yoo", 222, "jasonjayoo@outlook.com");
 
