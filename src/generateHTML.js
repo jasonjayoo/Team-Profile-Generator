@@ -4,7 +4,6 @@ const createManager = function (manager) {
     <div class="column is-one-third-desktop">
         <div class="card">
             <div class="card-content">
-
                 <div class="media">
                     <div class="media-left">
                     <h3>${manager.name}</h3>

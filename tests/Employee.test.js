@@ -6,7 +6,6 @@ describe("Employee", () => {
     // creates employee object
     it("should create an employee object", () => {
       const employee = new Employee("Jason Yoo", 222, "jasonjayoo@outlook.com");
-
       expect(employee.name).toEqual(expect.any(String));
       expect(employee.id).toEqual(expect.any(Number));
       expect(employee.email).toEqual(expect.any(String));
